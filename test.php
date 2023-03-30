@@ -25,7 +25,7 @@ $answerSelectQurey = $qp->selectQuery($selectQuery);
 ?>
 
 <div class="container pt-3">
-    <h3>DAA AE Ina Zimmermann</h3>
+    <h3>DAA AE Nadine Stamm</h3>
     <?=var_dump($answerSelectQurey)?>
 </div>
 
