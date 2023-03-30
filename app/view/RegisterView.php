@@ -45,6 +45,7 @@ class RegisterView extends BaseView {
 
     public function checkIfUserExisted():bool
     {
+        $result = true;
         if($this->email)
         {
            $userExisted =  $this->userController->checkIfUserExisted($this->email);
@@ -52,10 +53,13 @@ class RegisterView extends BaseView {
            {
             $this->component = $this->alert('warning', 'this email is already registered');
            }
-           return true;
+           else {
+            $result = false;
+           }
+           
 
         }
-        return false;
+        return $result;
     }
 
 
