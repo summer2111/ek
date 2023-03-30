@@ -43,7 +43,9 @@ class UserTable extends QueryProvider
    {
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
       $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>$isAdmin];
-      return $this->insertQuery($sqlQuery,$arrayBind);
+      $result = $this->insertQuery($sqlQuery,$arrayBind);
+      var_dump($this->getError());
+      return $result;
    }
 
    public function deleteById(int $id): int|null

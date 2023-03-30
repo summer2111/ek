@@ -53,11 +53,10 @@ class RegisterView extends BaseView {
            {
             $this->component = $this->alert('warning', 'this email is already registered');
            }
-           else {
+           else
+           {
             $result = false;
            }
-           
-
         }
         return $result;
     }
