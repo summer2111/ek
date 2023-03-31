@@ -1,7 +1,7 @@
 <?php
 namespace App\View;
 
-use UserController;
+use App\Controller\UserController;
 
 require_once("./app/controller/UserController.php");
 require_once("./app/view/BaseView.php");

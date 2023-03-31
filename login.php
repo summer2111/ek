@@ -1,14 +1,28 @@
 <?php 
+session_start();
+require_once('./app/controller/UserController.php');
+use App\Controller\UserController;
+$email = "";
+$error = "";
+if(isset($_POST['email'])) {
+  $controller = new UserController();
+
+$result = $controller->login($_POST['email'],$_POST['password']);
+if($result) {
+  $_SESSION['user'] = $_POST['email'];
+  header('Location:profile.php');
+  die;
+}
+else {
+  $error = "user pass wrong";
+}
+}
 include('./template/navbar.php'); 
-
-$email = $_POST['email'];
-$password = $_POST['password'];
-
 
 ?>
 <div class="m-3">
 <h1>Login</h1>
-<?=$password?>
+<?=$email?>
 <div class="card flex m-5 p-5 bg-secondary bg-opacity-10">
 <form method="post" class="">
 <div class="form-group">

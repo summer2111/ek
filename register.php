@@ -7,7 +7,7 @@ require_once('./app/view/RegisterView.php');
  $registerView = new RegisterView();
  $registerView->validateUserPost();
  $userExist = $registerView->checkIfUserExisted();
- var_dump($userExist);
+ //var_dump($userExist);
  if(!$userExist)
  {
   

@@ -19,6 +19,7 @@ class UserTable extends QueryProvider
 
    public function __construct()
    {
+      $this->id =0;
       parent::__construct();
    }
 
@@ -37,6 +38,18 @@ class UserTable extends QueryProvider
          return $this;
       }
       return null;
+   }
+   public function getUserByEmail(string $email):void
+   {
+      $sqlQuery = 'SELECT * FROM users WHERE email = :email';
+      $arrayBind = [':email'=>$email];
+      $result = $this->selectQuery($sqlQuery,$arrayBind);
+      if(isset($result[0]))
+      {
+         $this->convertSelectResultToObject($result[0]);
+        
+      }
+    
    }
    
    protected function insert(string $email, string $password , bool $isAdmin = false):int|null
