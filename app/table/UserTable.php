@@ -1,7 +1,5 @@
 <?php
-/*
-* By Stefan Schumacher
-*/
+
 namespace App\Table;
 use Table\Database\QueryProvider;
 require_once('./app/table/QueryProvider.php');
@@ -57,7 +55,10 @@ class UserTable extends QueryProvider
       $sqlQuery = 'INSERT INTO users (email ,password, isAdmin) VALUES (:email,:password,:isAdmin)';
       $arrayBind = [':email'=> $email,':password'=>$password,':isAdmin'=>$isAdmin];
       $result = $this->insertQuery($sqlQuery,$arrayBind);
-      var_dump($this->getError());
+      $error = $this->getError();
+      if($error) {
+         var_dump($this->getError());
+      }
       return $result;
    }
 
@@ -65,6 +66,13 @@ class UserTable extends QueryProvider
    {
       $deleteQuery = 'DELETE FROM users WHERE id = :id';
       $arrayBindDelete = [':id'=>$id];
+      return $this->deleteQuery($deleteQuery,$arrayBindDelete);
+   }
+
+   public function deleteByEmail(string $email): int|null
+   {
+      $deleteQuery = 'DELETE FROM users WHERE email = :email';
+      $arrayBindDelete = [':email'=>$email];
       return $this->deleteQuery($deleteQuery,$arrayBindDelete);
    }
 

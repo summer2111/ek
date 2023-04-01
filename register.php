@@ -8,14 +8,14 @@ require_once('./app/view/RegisterView.php');
  $registerView->validateUserPost();
  $userExist = $registerView->checkIfUserExisted();
  //var_dump($userExist);
+ 
  if(!$userExist)
- {
-  
-  $registerView->register();
+ {  
+  $registerView->register();  
  }
 ?>
 
-<h1>Register</h1>
+<h1>Registrierung</h1>
 <div class="card flex m-5 p-5 bg-secondary">
 
 <form  method="post" target="_self">
@@ -32,7 +32,7 @@ require_once('./app/view/RegisterView.php');
   </div>
 
   <br>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Registrieren</button>
 </form>
 
 </div>

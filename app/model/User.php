@@ -51,7 +51,7 @@ public function getUsers(): array
 }
 
 
-private function hashPassword($password): string
+public function hashPassword($password): string
 {
     $options = [
       'memory_cost' => 2048,

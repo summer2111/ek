@@ -69,7 +69,7 @@ class RegisterView extends BaseView {
         {
             $registeringProcess =  $this->userController->register($this->email,$this->password);
         }
-        
+
         if($registeringProcess)
         {
             $this->component = $this->alert('success','you are successfully registered');

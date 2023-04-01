@@ -4,18 +4,25 @@ require_once('./app/controller/UserController.php');
 use App\Controller\UserController;
 $email = "";
 $error = "";
+$loginFailed = false;
 if(isset($_POST['email'])) {
   $controller = new UserController();
 
-$result = $controller->login($_POST['email'],$_POST['password']);
-if($result) {
-  $_SESSION['user'] = $_POST['email'];
-  header('Location:profile.php');
-  die;
-}
-else {
-  $error = "user pass wrong";
-}
+  $result = $controller->login($_POST['email'],$_POST['password']);
+
+  if ($controller->checkIfUserExisted($_POST['email'])) {
+    if($result) {
+      $_SESSION['user'] = $_POST['email'];
+      header('Location:profile.php');
+      die;
+    }
+    else {
+      $error = "user pass wrong";
+    }    
+  } else {
+    $loginFailed = true;
+  }
+
 }
 include('./template/navbar.php'); 
 
@@ -35,7 +42,14 @@ include('./template/navbar.php');
     <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
   <br>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Einloggen</button>
+  <?php
+    if ($loginFailed) {
+  ?>
+      <a href="register.php" class="btn btn-secondary">Profil hinzufügen</a>
+  <?php
+    }
+  ?>
 </div>
 </form>
 </div>
