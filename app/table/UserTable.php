@@ -73,7 +73,6 @@ class UserTable extends QueryProvider
    {
       $deleteQuery = 'DELETE FROM users WHERE email = :email';
       $arrayBindDelete = [':email'=>$email];
-      echo "Ihr Profil wurde gelöscht";
       return $this->deleteQuery($deleteQuery,$arrayBindDelete);
     
    }
