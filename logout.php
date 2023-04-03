@@ -2,5 +2,6 @@
 session_start();
 session_destroy();
 $_SESSION = [];
-header('location:index.php');
+header('location:login.php');
+echo "Ihr Profil wurde gelösht.";
 die;

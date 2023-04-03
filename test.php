@@ -23,7 +23,7 @@ $selectQuery = 'SELECT * FROM users WHERE 1';
 $answerSelectQurey = $qp->selectQuery($selectQuery);
 
 ?>
-   <img src="http://localhost/ek/bilder/datenbank.jpg"
+
 <div class="container pt-3">
     <h3>DAA Anwendungsentwicklerin Nadine Stamm</h3>
     <?=var_dump($answerSelectQurey)?>

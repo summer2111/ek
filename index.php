@@ -10,7 +10,7 @@
 <div class="container pt-3">
 <h3>Herzlich Willkommen Anwendungsentwickler der DAA</h3>
 
-<img src="http://localhost/ek/bilder/bild.jpg"
+
 
 <?php
 if (isset($_POST["deleteProfile"])) {
